@@ -1,5 +1,5 @@
-# 🛰️ Network Monitor Dashboard (Flask + Windows Folder Picker)
-A beginner-friendly tool to monitor network reachability (via ping), save results to a chosen folder, and view your history in a clean web dashboard — all running locally on your machine.
+# 🛰️ Network Monitor Dashboard (Flask + optional Console-only)
+A beginner-friendly tool to monitor network reachability (via ping), save results to a chosen folder, and view your history in a clean web dashboard - all running locally on your machine.
 
 ---
 
@@ -61,3 +61,4 @@ project/
 - The folder picker uses tkinter, which must be installed (included by default on Windows).
 - Results are saved as .txt files in the folder you select.
 - Log file defaults to log.txt if left blank.
+- Can utilise just the `monitor.py` script, but must manually input the IPs to the `ip_list.txt` file.
