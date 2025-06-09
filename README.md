@@ -49,13 +49,14 @@ myenv\Scripts\activate
 `dist\web_app\wep_app.exe`
 
 ## File Structure:
+```
 project/
 ├── web_app.py
 ├── templates/
 │   └── index.html
 ├── saved_logs/
 └── README.md
-
+```
 ## Notes:
 - The folder picker uses tkinter, which must be installed (included by default on Windows).
 - Results are saved as .txt files in the folder you select.
