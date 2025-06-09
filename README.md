@@ -40,12 +40,15 @@ myenv\Scripts\activate
 ### 3. Run the app:
 `python web_app.py` Then open your browser and go to: http://127.0.0.1:5000
 
-# Optional: Build into a Windows.exe
-### 1. Install PyInstaller: `pip install pyinstaller`
-### 2. Run this command to build the executable: `pyinstaller --noconsole --add-data "templates;templates" web_app.py`
-### 3. Run the app via: `dist\web_app\wep_app.exe`
+# Optional: Build into a Windows.exe:
+### 1. Install PyInstaller: 
+`pip install pyinstaller`
+### 2. Run this command to build the executable:
+`pyinstaller --noconsole --add-data "templates;templates" web_app.py`
+### 3. Run the app via:
+`dist\web_app\wep_app.exe`
 
-## File Structure
+## File Structure:
 project/
 ├── web_app.py
 ├── templates/
@@ -53,7 +56,7 @@ project/
 ├── saved_logs/
 └── README.md
 
-## Notes
+## Notes:
 - The folder picker uses tkinter, which must be installed (included by default on Windows).
 - Results are saved as .txt files in the folder you select.
 - Log file defaults to log.txt if left blank.
