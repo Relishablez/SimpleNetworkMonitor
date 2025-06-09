@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Network Monitor</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+        }
+        input[type="text"] {
+            width: 300px;
+        }
+        button {
+            background-color: #1e88e5;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #1565c0;
+        }
+        .result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Form -->
+    <form method="post">
+        <label>Hostname/IP:</label><br>
+        <input type="text" id="hostname" name="hostname" value="{{ hostname or '' }}" required><br>
+
+        <label>Log File Name (optional):</label><br>
+        <input type="text" id="filename" name="filename" placeholder="log (optional)" value="{{ filename or '' }}"><br>
+
+        <p>Selected Folder: <strong>{{ folder if folder else 'None selected' }}</strong></p>
+
+        <button name="action" value="ping" type="submit">Ping & Save</button>
+        <button name="action" value="clear" type="submit">Clear All</button>
+    </form>
+
+    <!-- Folder Picker Form -->
+    <form method="post" style="margin-top: 10px;">
+        <input type="hidden" name="hostname" id="hiddenHostname">
+        <input type="hidden" name="filename" id="hiddenFilename">
+        <button name="action" value="choose_folder" type="submit" onclick="copyInputValues()">Choose Folder</button>
+    </form>
+
+    <!-- Open Folder -->
+    <form method="post" style="margin-top: 10px;">
+        <button name="action" value="open_folder" type="submit" {% if not folder %}disabled{% endif %}>Open Folder</button>
+    </form>
+
+    <!-- Result History -->
+    <div class="result">
+        <h3>Results:</h3>
+        {% if history %}
+            <ul>
+            {% for line in history %}
+                <li style="color: {% if 'ERROR' in line %}red{% else %}lightgreen{% endif %}">{{ line }}</li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No results yet.</p>
+        {% endif %}
+    </div>
+
+    <script>
+        function copyInputValues() {
+            document.getElementById('hiddenHostname').value = document.getElementById('hostname').value;
+            document.getElementById('hiddenFilename').value = document.getElementById('filename').value;
+        }
+    </script>
+
+</body>
+
+</html>
